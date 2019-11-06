@@ -6,6 +6,8 @@ if importlib.util.find_spec("stable_baselines") is not None:
 if importlib.util.find_spec("tensorforce") is not None:
     from .tensorforce_trading_strategy import TensorforceTradingStrategy
 
+from .neat_trading_strategy import NeatTradingStrategy
+
 
 _registry = {}
 

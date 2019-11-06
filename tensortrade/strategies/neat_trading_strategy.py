@@ -257,7 +257,7 @@ class NeatTradingStrategy(TradingStrategy):
         genome.fitness = self.eval_genome(genome, config)
         return
 
-    def eval_genome(self, genome, config: neat.Config = None):
+    def eval_genome(self, genome, config:  None):
         if self._watch_genome_evaluation:
             print('---------------------------')
 
