@@ -20,7 +20,13 @@ from gym.spaces import Box
 from tensortrade.actions import ActionStrategy, TradeActionUnion, DTypeString
 from tensortrade.trades import Trade, TradeType
 
+"""
+简单连续的策略，从总的余额中计算可交易的数量。
+  * max_allow_slippage 当前价格的最大溢价
+  * instrument_symbol 这个删去了
+    
 
+"""
 class ContinuousActionStrategy(ActionStrategy):
     """Simple continuous strategy, which calculates the real-trade amount as
     a fraction of the total balance.

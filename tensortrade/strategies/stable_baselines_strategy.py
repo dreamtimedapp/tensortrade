@@ -30,6 +30,28 @@ from stable_baselines import DQN
 from tensortrade.environments.trading_environment import TradingEnvironment
 from tensortrade.strategies import TradingStrategy
 
+"""
+
+700/5000
+在此示例中，我们将使用“Baselines”库为我们的交易策略提供学习代理，
+但是，TensorTrade框架与许多强化学习库（例如Tensorforce，
+Ray的RLLib，OpenAI的Baselines，Intel的Coach或TensorFlow系列中的任何东西，例如TF Agents。
+自定义TensorTrade学习代理可能会在将来添加到此框架中，尽管它将
+框架的目标始终是与尽可能多的现有强化学习库互操作
+可能的，因为该空间同时增长很多。 但就目前而言，“OpenAI的Baselines”既简单又强大
+足以满足我们的需求。
+代码示例如下：
+from stable_baselines.common.policies import MlpLnLstmPolicy
+from statble_baselines import PPO2
+
+model = PPO2
+policy = MlpLnLstmPolicy 
+params = { "learning_rate": 1e-5 }
+agent = model(policy, environment, model_kwargs=params)
+
+在这个例子中我们使用GPU优化模型并带有一层 lstm神经网络。
+
+"""
 
 class StableBaselinesTradingStrategy(TradingStrategy):
     """A trading strategy capable of self tuning, training, and evaluating with stable-baselines.

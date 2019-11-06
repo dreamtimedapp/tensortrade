@@ -22,7 +22,28 @@ from abc import abstractmethod
 from typing import Union, List, Callable
 
 from tensortrade.features.feature_transformer import FeatureTransformer
+"""
+基于 open,high,close,low的价格
+* indicators  一系列的的指标，比如rsi,macd,adx等，这里有个疑问，是如何将
+* lows 
+   - 观测空间的最低值， 
+  highs
+   - 观测空间的最高值
+   
+使用范例：
+from tensortrade.features import FeaturePipeline  
+from tensortrade.features.scalers import MinMaxNormalizer
+from tensortrade.features.indicators import TAlibIndicator
 
+price_columns = ["open", "high", "low", "close"]
+normalize_price = MinMaxNormalizer(price_columns)
+moving_averages = TAlibIndicator(["EMA","RSI","BB"])
+difference_all = FractionalDifference(difference_order=0.6)
+feature_pipeline = FeaturePipeline(steps=[normalize_price,
+        moving_averages,
+            difference_all])
+exchange.feature_pipeline = feature_pipeline
+"""
 class TAlibIndicator(FeatureTransformer):
     """Adds one or more TAlib indicators to a data frame, based on existing open, high, low, and close column values."""
 

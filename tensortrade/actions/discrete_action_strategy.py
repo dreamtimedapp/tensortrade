@@ -19,6 +19,10 @@ from gym.spaces import Discrete
 from tensortrade.actions import ActionStrategy, TradeActionUnion, DTypeString
 from tensortrade.trades import Trade, TradeType
 
+"""
+简单离散的动作策略，用来计算可交易数量占总余额的百分比
+
+"""
 
 class DiscreteActionStrategy(ActionStrategy):
     """Simple discrete strategy, which calculates the real-trade amount as a fraction of the total balance.

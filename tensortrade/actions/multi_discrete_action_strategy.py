@@ -20,7 +20,10 @@ from gym.spaces import Discrete
 from tensortrade.actions import ActionStrategy, TradeActionUnion, DTypeString
 from tensortrade.trades import Trade, TradeType
 
+"""
+离散策略，对于每个交易命令，计算可交易的最大数量
 
+"""
 class MultiDiscreteActionStrategy(ActionStrategy):
     """Discrete strategy, which calculates the real-trade amount as a fraction of
     the total balance for each instrument provided.

@@ -18,7 +18,14 @@ import numpy as np
 from abc import ABCMeta, abstractmethod
 from typing import Union, List
 
+"""
+trading strategy 是深度强化学习框架的核心。
+在每个时间步，机器人通过观察环境中的输入，然后在大多数时间通过神经网络产生对应点动作输出。
+例如，机器人可能观察交易所的 open, high, low, close价格。学习模型采用这些数据作为输入然后产生
+buy, sell 或者hold 的输出。
 
+
+"""
 class TradingStrategy(object, metaclass=ABCMeta):
     """An abstract trading strategy capable of self tuning, training, and evaluating."""
 

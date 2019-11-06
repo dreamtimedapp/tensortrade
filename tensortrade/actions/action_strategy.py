@@ -23,7 +23,11 @@ from tensortrade.trades import Trade
 
 DTypeString = Union[type, str]
 TradeActionUnion = Union[int, float, tuple]
+"""
+Action策略定义了一系列环境的动作空间，然后将agent的动作转化为真正可执行的交易命令
 
+
+"""
 
 class ActionStrategy(Component):
     """An abstract strategy for determining the action to take at each timestep within a trading environments."""

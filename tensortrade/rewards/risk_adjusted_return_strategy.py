@@ -20,7 +20,18 @@ from typing import Callable
 from tensortrade.rewards import RewardStrategy
 from tensortrade.trades import TradeType, Trade
 
+"""
+奖励策略，奖励机器人增加其净资产的行为，同时惩罚更不良导致亏损的策略
+在交易时，通常不仅查看模型的整体收益，也在查看与其他模型相比的收益，以及收益随着时间的波动性，比如最大回撤。
+有两个主要的策略，sharpe比率和sortino比率。
 
+* sharpe 比率着眼于投资组合的整体变动，并通过给巨额变动较低的分数的方式进行惩罚
+* sortino ratio采用相同的方式，尽管它更侧重与上行空间。这意味着 sortino ratio会在价格上涨时给巨大的分数，
+而在价格下降时只会给出负的得分。
+这是RL算法一个很好的方向，我们不想承受沉重的下跌风险，但是想要承担较大的上涨空间。仅仅通过使用此指标就能够帮助
+我们减轻负面影响和增加上行空间带来更大的进步。
+
+"""
 class RiskAdjustedReturnStrategy(RewardStrategy):
     """A reward strategy that rewards the agent for increasing its net worth, while penalizing more volatile strategies.
     """

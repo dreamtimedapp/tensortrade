@@ -18,7 +18,11 @@ import numpy as np
 from tensortrade.rewards import RewardStrategy
 from tensortrade.trades import TradeType, Trade
 
-
+"""
+297/5000
+简单的利润策略需要保留一段时间内的利润历史。 它的实现方式是通过查看
+投资组合，以跟踪投资组合的移动方式。这可以在get_reward函数内部看到。
+"""
 class SimpleProfitStrategy(RewardStrategy):
     """A reward strategy that rewards the agent for profitable trades and prioritizes trading over not trading.
 

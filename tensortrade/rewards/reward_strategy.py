@@ -19,7 +19,13 @@ from abc import abstractmethod
 from tensortrade import Component
 from tensortrade.trades import Trade
 
+"""
+Reward策略在每个时间步通过接受Trade策略，反回一个float类型，获取每个特定的动作的收益
+举个例子，如果一个动作是卖然后产生了正向收益，那么奖励策略就产生一个正向的数字比如1 鼓励机器人的交易
+另一方面，如果一个动作比如卖，导致了亏损，那么奖励策略则教会机器不要做类似的事情
+每个奖励策略都有get_reward方法的具体实现，反回每个时间步的奖励策略。
 
+"""
 class RewardStrategy(Component):
 
     registered_name = "rewards"
