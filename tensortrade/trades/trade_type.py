@@ -16,7 +16,7 @@ from enum import Enum
 
 
 class TradeType(Enum):
-    """A trade type for use within trading environments."""
+    """A real-trade type for use within trading environments."""
 
     HOLD = 0
     LIMIT_BUY = 1
@@ -28,7 +28,7 @@ class TradeType(Enum):
     def is_hold(self) -> bool:
         """
         Returns:
-            Whether the trade type is non-existent (i.e. hold).
+            Whether the real-trade type is non-existent (i.e. hold).
         """
         return self == TradeType.HOLD
 
@@ -36,7 +36,7 @@ class TradeType(Enum):
     def is_buy(self) -> bool:
         """
         Returns:
-            Whether the trade type is a buy offer.
+            Whether the real-trade type is a buy offer.
         """
         return self == TradeType.MARKET_BUY or self == TradeType.LIMIT_BUY
 
@@ -44,6 +44,6 @@ class TradeType(Enum):
     def is_sell(self) -> bool:
         """
         Returns:
-            Whether the trade type is a sell offer.
+            Whether the real-trade type is a sell offer.
         """
         return self == TradeType.MARKET_SELL or self == TradeType.LIMIT_SELL

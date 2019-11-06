@@ -37,7 +37,7 @@ class StableBaselinesTradingStrategy(TradingStrategy):
     Parameters:
     ----------
     environments : `TradingEnvironment`
-        An instance of a trading environments for the agent to trade within.
+        An instance of a trading environments for the agent to real-trade within.
     model : BaseRLModel
         The RL model to create the agent with.
         Defaults to DQN.
@@ -64,7 +64,7 @@ class StableBaselinesTradingStrategy(TradingStrategy):
 
     @property
     def environment(self) -> 'TradingEnvironment':
-        """A `TradingEnvironment` instance for the agent to trade within."""
+        """A `TradingEnvironment` instance for the agent to real-trade within."""
         return self._environment
 
     @environment.setter

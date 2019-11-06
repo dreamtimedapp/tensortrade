@@ -26,13 +26,13 @@ class TradingStrategy(object, metaclass=ABCMeta):
     def __init__(self, environment: 'TradingEnvironment'):
         """
         Arguments:
-            environment: A `TradingEnvironment` instance for the agent to trade within.
+            environment: A `TradingEnvironment` instance for the agent to real-trade within.
         """
         self._environment = environment
 
     @property
     def environment(self) -> 'TradingEnvironment':
-        """A `TradingEnvironment` instance for the agent to trade within."""
+        """A `TradingEnvironment` instance for the agent to real-trade within."""
         return self._environment
 
     @environment.setter

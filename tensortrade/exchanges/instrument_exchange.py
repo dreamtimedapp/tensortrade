@@ -231,13 +231,13 @@ class InstrumentExchange(Component):
 
     @abstractmethod
     def execute_trade(self, trade: Trade) -> Trade:
-        """Execute a trade on the exchange, accounting for slippage.
+        """Execute a real-trade on the exchange, accounting for slippage.
 
         Arguments:
-            trade: The trade to execute.
+            trade: The real-trade to execute.
 
         Returns:
-            The filled trade.
+            The filled real-trade.
         """
         raise NotImplementedError
 

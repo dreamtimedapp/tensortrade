@@ -22,7 +22,7 @@ from tensortrade.trades import Trade, TradeType
 
 
 class ContinuousActionStrategy(ActionStrategy):
-    """Simple continuous strategy, which calculates the trade amount as
+    """Simple continuous strategy, which calculates the real-trade amount as
     a fraction of the total balance.
 
     Parameters

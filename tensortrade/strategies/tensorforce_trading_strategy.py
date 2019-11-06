@@ -34,7 +34,7 @@ class TensorforceTradingStrategy(TradingStrategy):
     def __init__(self, environment: 'TradingEnvironment', agent_spec: any, save_best_agent: bool = False, **kwargs):
         """
         Arguments:
-            environment: A `TradingEnvironment` instance for the agent to trade within.
+            environment: A `TradingEnvironment` instance for the agent to real-trade within.
             agent: A `Tensorforce` agent or agent specification.
             save_best_agent (optional): The runner will automatically save the best agent
             kwargs (optional): Optional keyword arguments to adjust the strategy.

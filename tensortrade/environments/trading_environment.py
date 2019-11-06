@@ -110,13 +110,13 @@ class TradingEnvironment(gym.Env):
         self._exchange.feature_pipeline = feature_pipeline
 
     def _take_action(self, action: TradeActionUnion) -> Trade:
-        """Determines a specific trade to be taken and executes it within the exchange.
+        """Determines a specific real-trade to be taken and executes it within the exchange.
 
         Arguments:
-            action: The trade action provided by the agent for this timestep.
+            action: The real-trade action provided by the agent for this timestep.
 
         Returns:
-            A tuple containing the (fill_amount, fill_price) of the executed trade.
+            A tuple containing the (fill_amount, fill_price) of the executed real-trade.
         """
         executed_trade = self._action_strategy.get_trade(action=action)
 
@@ -128,7 +128,7 @@ class TradingEnvironment(gym.Env):
         """Returns the next observation from the exchange.
 
         Returns:
-            The observation provided by the environments's exchange, often OHLCV or tick trade history data points.
+            The observation provided by the environments's exchange, often OHLCV or tick real-trade history data points.
         """
         self._current_step += 1
 
@@ -166,7 +166,7 @@ class TradingEnvironment(gym.Env):
         """Returns any auxiliary, diagnostic, or debugging information for the current timestep.
 
         Returns:
-            info: A dictionary containing the exchange used, the current timestep, and the filled trade, if any.
+            info: A dictionary containing the exchange used, the current timestep, and the filled real-trade, if any.
         """
         return {'current_step': self._current_step,
                 'exchange': self._exchange,
@@ -177,10 +177,10 @@ class TradingEnvironment(gym.Env):
         """Run one timestep within the environments based on the specified action.
 
         Arguments:
-            action: The trade action provided by the agent for this timestep.
+            action: The real-trade action provided by the agent for this timestep.
 
         Returns:
-            observation (pandas.DataFrame): Provided by the environments's exchange, often OHLCV or tick trade history data points.
+            observation (pandas.DataFrame): Provided by the environments's exchange, often OHLCV or tick real-trade history data points.
             reward (float): An amount corresponding to the benefit earned by the action taken this timestep.
             done (bool): If `True`, the environments is complete and should be restarted.
             info (dict): Any auxiliary, diagnostic, or debugging information to output.

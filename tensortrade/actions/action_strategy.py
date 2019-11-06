@@ -77,12 +77,12 @@ class ActionStrategy(Component):
 
     @abstractmethod
     def get_trade(self, action: TradeActionUnion) -> Trade:
-        """Get the trade to be executed on the exchange based on the action provided.
+        """Get the real-trade to be executed on the exchange based on the action provided.
 
         Arguments:
-            action: The action to be converted into a trade.
+            action: The action to be converted into a real-trade.
 
         Returns:
-            The trade to be executed on the exchange this timestep.
+            The real-trade to be executed on the exchange this timestep.
         """
         raise NotImplementedError

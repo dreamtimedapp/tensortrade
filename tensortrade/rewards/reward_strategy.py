@@ -46,7 +46,7 @@ class RewardStrategy(Component):
         """
         Arguments:
             current_step: The environments's current timestep.
-            trade: The trade executed and filled this timestep.
+            trade: The real-trade executed and filled this timestep.
 
         Returns:
             A float corresponding to the benefit earned by the action taken this timestep.

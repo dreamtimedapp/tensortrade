@@ -22,7 +22,7 @@ from tensortrade.trades import Trade, TradeType
 
 
 class MultiDiscreteActionStrategy(ActionStrategy):
-    """Discrete strategy, which calculates the trade amount as a fraction of
+    """Discrete strategy, which calculates the real-trade amount as a fraction of
     the total balance for each instrument provided.
 
     Parameters
@@ -64,8 +64,8 @@ class MultiDiscreteActionStrategy(ActionStrategy):
             'the requirements of `gym.spaces.Discrete` spaces. ')
 
     def get_trade(self, action: TradeActionUnion) -> Trade:
-        """The trade type is determined by `action % len(TradeType)`, and
-        the trade amount is determined by the multiplicity of the action.
+        """The real-trade type is determined by `action % len(TradeType)`, and
+        the real-trade amount is determined by the multiplicity of the action.
 
         For example:
             0 = HOLD

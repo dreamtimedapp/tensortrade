@@ -7,5 +7,5 @@ from . import slippage
 from . import strategies
 from . import trades
 
-
 from .version import __version__
+
