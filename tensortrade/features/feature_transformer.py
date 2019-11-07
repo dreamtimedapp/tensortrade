@@ -53,6 +53,9 @@ class FeatureTransformer(Component, metaclass=ABCMeta):
         """Optionally implementable method for resetting stateful transformers."""
         pass
 
+    """
+    transform_space 方法通过申请一个流水线将特征转化为待观测的observation的下一帧。
+    """
     def transform_space(self, input_space: Space, column_names: List[str]) -> Space:
         """Get the transformed output space for a given input space.
 
@@ -62,6 +65,13 @@ class FeatureTransformer(Component, metaclass=ABCMeta):
 
         Returns:
             A `gym.Space` matching the shape of the pipeline's output.
+
+        1. 如果self._inplace为true, 即不做转化
+        2. 克隆input_space,  给columns赋值每个转化器，比如 open,  close， low, high
+        3. 获取输入空间的shape，同时每个转化器的转化的数据添加到新列，比如 max_normalizer，standard_normalizer, [...., ....]
+        4. 每个转化器都增加一个维度的shpae
+        5. 对于每个transform转化器，获取输入空间的最低值和最高值
+
         """
         if self._inplace:
             return input_space
@@ -84,7 +94,7 @@ class FeatureTransformer(Component, metaclass=ABCMeta):
     @abstractmethod
     def transform(self, X: pd.DataFrame, input_space: Space) -> pd.DataFrame:
         """Transform the data set and return a new data frame.
-
+         将数据集转化为每一帧可以返回的数据，每个时间步
         Arguments:
             X: The set of data to transform.
             input_space: A `gym.Space` matching the shape of the pipeline's input.

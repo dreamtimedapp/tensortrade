@@ -136,12 +136,15 @@ class StableBaselinesTradingStrategy(TradingStrategy):
             exchange_performance = info[0].get('exchange').performance
             performance = exchange_performance if len(exchange_performance) > 0 else performance
 
+
             if dones[0]:
                 if episode_callback is not None and episode_callback(self._environment._exchange.performance):
                     break
 
                 episodes_completed += 1
                 obs = self._environment.reset()
+
+                print("performance: {}, Average reward: {},steps: {}. ".format(performance,average_reward,episodes_completed))
 
         print("Finished running strategy.")
         print("Total episodes: {} ({} timesteps).".format(episodes_completed, steps_completed))

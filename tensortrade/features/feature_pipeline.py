@@ -23,7 +23,32 @@ from .feature_transformer import FeatureTransformer
 
 
 DTypeString = Union[type, str]
+"""
+Feature pipelines 将环境中观察到的数据转化为有意思的特征，从而让机器用于学习。
+如果一个特征管道被添加到特定的交易所，那么在输出具体的buy, sell, hold交易命令前，观察到的特征将会传递给featurePipeline。
+举个例子，一个特征管道在将观测到的数据生成动作之前，可以normalize所有的价格数据，并使得时间序列 stationary，添加移动平均列，移除掉不必要的列。
 
+Feature pipelines 可以被任意数量的逗号分隔的transformers初始化。 每个 FeatureTransformer 需要被一些类数据初始化，如果什么都没有传进去，
+那么所有的列都被转转化。
+
+每个 feature transformer 有一个 transform方法，每个transform 转换一个单独的观测值从大数据中，同时保留必要的特征用于下一帧的转化。
+由于这个原因，通常 featureTransformer 定期的执行。这个过程是被自动执行的，在FeaturePipeline或者InsrumentExchange被重置时。
+
+示例如下：
+from tensortrade.features import FeaturePipeline
+from tensortrade.features.scalers import MinMaxNormalizer
+from tensortrade.features.stationarity import FractionalDifference
+from tensortrade.features.indicators import SimpleMovingAverage
+
+price_columns = ["open", "high", "low", "close"]
+normalize_price = MinMaxNormalizer(price_columns)
+moving_averages = SimpleMovingAverage(price_columns)
+difference_all = FractionalDifference(difference_order=0.6)
+feature_pipeline = FeaturePipeline(steps=[normalize_price,
+                                          moving_averages,
+                                          difference_all])
+exchange.feature_pipeline = feature_pipeline
+"""
 
 class FeaturePipeline(Component):
     """An pipeline for transforming observation data frames into features for learning."""
