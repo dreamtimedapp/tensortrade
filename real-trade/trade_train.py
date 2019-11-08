@@ -49,7 +49,7 @@ def train_bot():
     x_train, x_test, df_train, df_test = load_data()
     exchange = SimulatedExchange(data_frame=df_train,
                         pretransform=True,
-                        base_instrument='USDT',
+                        base_instrument='BTC/USDT',
                         commission_percent=0.75,
                         window_size=1,
                         max_allowed_slippage_percent=3.0,
@@ -64,10 +64,11 @@ def train_bot():
 
     strategy = StableBaselinesTradingStrategy(environment=environment,model=PPO2)
     print("Running through ", strategy, ' steps')
+    print("tune the netual network")
     strategy.restore_agent('./agent')
-    strategy.run(episodes=2)
+    print("train the agent")
+    strategy.run(episodes=1)
     strategy.save_agent('./agent')
-
 
 train_bot()
 
