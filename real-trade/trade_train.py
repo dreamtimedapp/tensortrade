@@ -67,9 +67,8 @@ def train_bot():
     print("tune the netual network")
     strategy.restore_agent('./agent')
     print("train the agent")
-    strategy.run(episodes=1)
+    strategy.run(episodes=10000)
     strategy.save_agent('./agent')
-
 train_bot()
 
 
